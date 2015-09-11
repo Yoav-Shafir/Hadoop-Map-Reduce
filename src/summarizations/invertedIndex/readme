@@ -1,0 +1,8 @@
+using Posts.xml
+
+The following example analyzes each comment in Stack‐
+Overflow to find hyperlinks to Wikipedia. If there is one, the link is output with the
+comment ID to generate the inverted index.
+
+When it comes to the reduce phase, all the
+comment IDs that reference the same hyperlink will be grouped together.

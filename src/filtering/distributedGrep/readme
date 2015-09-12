@@ -1,0 +1,4 @@
+This job scans through a file line-by-line and only outputs lines that match
+a specific pattern. We’d like to parallelize the regular expression search across a larger
+body of text. In this example, we’ll show how to apply a regular expression to every line
+in MapReduce.

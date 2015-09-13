@@ -1,0 +1,10 @@
+hello
+world
+hadoop
+zookeeper
+hbase
+hive
+hbase
+sqoop
+mapreduce
+banana

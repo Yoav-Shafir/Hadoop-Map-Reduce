@@ -1,3 +1,25 @@
 bloom filter must to watch youtube videos:
 1. https://www.youtube.com/watch?v=NjpXRtXfN1I
 2. https://www.youtube.com/watch?v=F4wBwJF88O8 (4 parts)
+
+how to execute the job:
+1. run the Training.java class with these args:
+args[0] hot_values -> input file, the 'hot values' directory.
+args[1] 2 -> the number of records we will use with the trained filter (Comments.xml).
+args[2] 0.01 -> the desired false positive rate.
+args[3] /out -> output file, the bloom filter object.
+
+files for example:
+
+hot_values/hot-values.txt:
+beer
+banana
+
+then run the Driver.java class which is the job that uses the trained filter.
+we had the word "beer" as a member of the 'hot-values.txt' set and
+we have "beer" in the second record as part of the 'Text' attribute.
+we expect to "catch" the second record using the trained bloom filter.
+
+Comments.xml (contains for easy testing only 2 records)
+<row Id="1" PostId="5" Score="0" Text="This is a matter of taste I guess." CreationDate="2014-01-21T20:34:28.740" UserId="10" />
+<row Id="4" PostId="16" Score="2" Text="This question appears to be off-topic because it is about biology rather than beer." CreationDate="2014-01-21T20:52:14.490" UserId="39" />

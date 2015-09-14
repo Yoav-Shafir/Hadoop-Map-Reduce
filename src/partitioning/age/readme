@@ -1,0 +1,19 @@
+This example illustrates how to use customized partitioner in a MapReduce program.
+We will use custom partitioning in MapReduce program to find the maximum scorer in each gender 
+and three age categories: less than 20, 20 to 50, greater than 50.
+
+run job on the 'dataset/data/scorer.txt' file.
+
+the output will be:
+
+/out/part-r-00000:
+Nancy	age- 7	female	score-98
+Adam	age- 9	male	score-37
+
+/out/part-r-00001:
+Kristine	age- 38	female	score-53
+Bob	age- 34	male	score-89
+
+/out/part-r-00002:
+Monica	age- 56	female	score-92
+Chris	age- 67	male	score-97

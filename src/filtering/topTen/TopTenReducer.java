@@ -1,4 +1,4 @@
-package filtering.topten;
+package filtering.topTen;
 
 import java.util.Map;
 import java.util.TreeMap;

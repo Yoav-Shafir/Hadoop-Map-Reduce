@@ -1,0 +1,5 @@
+Calculating the minimum, maximum, and count of a given field.
+Given a list of user’s comments, determine the first and last time a user commented
+and the total number of comments from that user.
+
+run the job on the Comments.xml file.

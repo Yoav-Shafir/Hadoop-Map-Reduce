@@ -1,3 +1,3 @@
-file to use: Users.xml
- 
 A map-only job to count the number of users in each state.
+
+run the job on the Users.xml file

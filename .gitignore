@@ -4,5 +4,5 @@ ch*
 .settings
 bin
 sample.data
-top*
 word*
+top_queries.pig

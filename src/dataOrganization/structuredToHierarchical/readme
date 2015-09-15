@@ -1,0 +1,24 @@
+Transform your row-based data to a hierarchical format, such as JSON or XML.
+Given a list of posts and comments, we'll create a structured XML hierarchy to nest
+comments with their related post.
+
+run the on on the Posts.xml & Comments.xml files.
+
+Posts.xml:
+here we have a post record with an Id of 1.
+
+<row Id="1" PostTypeId="2" ParentId="35" CreationDate="2014-01-21T21:07:40.557" 
+Score="4" Body="Some beer use..." href="" OwnerUserId="27" LastActivityDate="2014-01-21T21:07:40.557" CommentCount="0" />
+
+Comments.xml
+here we have 2 comments with a PostId of 1 which is like a foreign key to the post record.
+
+<row Id="1" PostId="1" Score="0" Text="This is a matter of taste I guess." CreationDate="2014-01-21T20:34:28.740" UserId="10" />
+<row Id="8" PostId="1" Score="5" Text="A good answer here should include *how* various types of glasses work." CreationDate="2014-01-21T20:34:28.740" UserId="39" />
+
+expected result:
+
+<post Body="Some beer use..." CommentCount="0" CreationDate="2014-01-21T21:07:40.557" Id="1" LastActivityDate="2014-01-21T21:07:40.557" OwnerUserId="27" ParentId="35" PostTypeId="2" Score="4" href="">
+	<comments CreationDate="2014-01-21T20:34:28.740" Id="8" PostId="1" Score="5" Text="A good answer here should include *how* various types of glasses work." UserId="39"/>
+	<comments CreationDate="2014-01-21T20:34:28.740" Id="1" PostId="1" Score="0" Text="This is a matter of taste I guess." UserId="10"/>
+</post>

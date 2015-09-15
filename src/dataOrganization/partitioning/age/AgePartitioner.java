@@ -1,4 +1,4 @@
-package partitioning.age;
+package dataOrganization.partitioning.age;
 
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Partitioner;

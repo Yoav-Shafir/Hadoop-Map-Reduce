@@ -1,4 +1,4 @@
-package partitioning.age;
+package dataOrganization.partitioning.age;
 
 import java.io.IOException;
 

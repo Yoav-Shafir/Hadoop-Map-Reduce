@@ -1,4 +1,4 @@
-package partitioning.age;
+package dataOrganization.partitioning.age;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;

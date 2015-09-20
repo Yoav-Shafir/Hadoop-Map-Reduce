@@ -1,0 +1,6 @@
+we have a set of users records and a list of user’s comments,
+every comment has a userId property, the join will be on the UserId value.
+the final output will be a record that is composed from the comment record and the user associated with
+it. 
+
+run the jon on the 'Users.xml' & the 'Comments.xml'.

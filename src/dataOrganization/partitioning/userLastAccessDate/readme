@@ -1,0 +1,4 @@
+we want to organize the data into partitions based on the user's year of the last access
+date.
+
+run job on the 'Users.xml' file.

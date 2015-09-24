@@ -3,8 +3,20 @@ package dataOrganization.partitioning.age;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Partitioner;
 
-public class AgePartitioner extends Partitioner<Text, Text> {
+// The default org.apache.hadoop.mapreduce.lib.partition.hashPartitioner 
+// has the following implementation of getPartition function:
+/*
+ * 
+ * public int getPartition(K key, V value, int numReduceTasks) {
+    	return (key.hashCode() & Integer.MAX_VALUE) % numReduceTasks;
+	}
+ * 
+ * */
+// The logical & with the hashCode is to prevent negative value to be returned if -2147483648 
+// is returned by key.getHashCode function.
 
+public class AgePartitioner extends Partitioner<Text, Text> {
+	
 	@Override
 	public int getPartition(Text key, Text value, int numReduceTasks) {
 

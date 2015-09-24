@@ -1,0 +1,50 @@
+advanced reduce join.
+
+files:
+
+'Product.short.csv'
+
+product_id	product_name		product_naumber etc...
+776			Adjustable Race		AR-5381	0	0	1000
+777			Bearing Ball		BA-8327	0	0	1000
+
+'SalesOrderData.short.csv'
+
+order_id 					order_qty	product_id	unit_price
+43659	 1	4911-403C-98	1			776		1	2024.9940
+43659	 2	4911-403C-98	3			777		1	2024.9940
+43659	 3	4911-403C-98	5			776		1	2024.9940
+43659	 4	4911-403C-98	7			777		1	2024.9940
+
+we want to join both datasets on the product_id filed.
+
+general:
+we implement a mapper key class - ProductIdKey which has 2 fields: ProductId and RecordType.
+it implements WritableComparable<ProductIdKey>, which allows it to be serialized and deserialized, 
+and also, to compare it with other records.
+
+both mappers - ProductMapper & SalesOrderDataMapper output the same key class but emit different values(which is also a class).
+to overcome this we need some generic type for the value(class) that the reducer can handle.
+
+//***** Mappers output *****//
+
+the output of the ProductMapper(first dataset) will be
+we also using Grouping and Sorting Comparators(check source code):
+
+<Key		product_id, product_type, 	value 								product_name, product_naumber
+keyProductIdKey<776, 1>					JoinGenericWritable(ProductRecord(Adjustable Race, AR-5381))
+keyProductIdKey<777, 1>					JoinGenericWritable(ProductRecord(Bearing Ball, BA-8327))
+
+the output of the SalesOrderDataMapper will be:
+
+<Key		product_id, product_type, 	value 								order_qty, unit_price
+keyProductIdKey<776, 0>					JoinGenericWritable(SalesOrderDataRecord(1, 2024.994000))
+keyProductIdKey<777, 0>					JoinGenericWritable(SalesOrderDataRecord(3, 6074.982000))
+keyProductIdKey<776, 0>					JoinGenericWritable(SalesOrderDataRecord(5, 4024.994000))
+keyProductIdKey<777, 0>					JoinGenericWritable(SalesOrderDataRecord(6, 8074.982000))
+
+after joining, the final output will be:
+
+product_id, product_name, 		product_naumber, sum_order_qty, sum_unit_price
+776, 		Adjustable Race, 	AR-5381,		 6, 			6049.988
+777, 		Bearing Ball, 		BA-8327, 		 10,	 		14149.964
